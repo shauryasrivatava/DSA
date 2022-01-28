@@ -1,0 +1,52 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=sc.nextInt();
+		}
+		int target=sc.nextInt();
+		boolean dp[][]=new boolean[n+1][target+1];
+		for(int i=0;i<=n;i++){
+		   for(int j=0;j<=target;j++){
+		       if(j==0 && i==0){
+		           dp[i][j]=true;
+		       }
+		       else if(i==0){
+		           dp[i][j]=false;
+		       }
+		       else if(j==0){
+		           dp[i][j]=true;
+		       }
+		       else{
+		           if(dp[i-1][j]==true){
+		               dp[i][j]=true;
+		           }else {
+		               if(j>arr[i-1]){
+		                   if(dp[i-1][j-arr[i-1]]==true){
+		                      dp[i][j]=true;
+		                   }
+		               }
+		           }
+		       }
+		       
+		   }
+		}
+    	  // printing the dp array
+	   // int ans=0;
+	   // for(int i=0;i<n;i++){
+    // 	   ans=Math.max(ans,dp[i][0]);
+	   // }
+		System.out.println(dp[n][target]);
+// 		System.out.println(ans);
+		
+	}
+}
