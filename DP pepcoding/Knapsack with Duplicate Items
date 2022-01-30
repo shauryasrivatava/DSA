@@ -1,0 +1,23 @@
+//User function Template for Java
+
+class Solution{
+    static int knapSack(int N, int W, int val[], int wt[])
+    {
+        // code here
+        int dp[] =new int[W+1];
+        dp[0]=0;
+        int temp=0;
+        for(int i=0;i<=W;i++){
+            for(int j=0;j<wt.length;j++){
+                if(i>=wt[j]){
+                    int prev=val[j]+dp[i-wt[j]];
+                    temp=Math.max(prev,temp);
+                    dp[i]=temp;
+                }
+                // System.out.print(dp[i]);
+            }
+            // System.out.println();
+        }
+        return dp[W];
+    }
+}
