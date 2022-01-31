@@ -1,0 +1,22 @@
+//User function Template for Java
+
+class Solution
+{
+    public int TotalWays(int N)
+    {
+        // Code here
+        long prevbuild=1;
+        long prevspace=1;
+        for(int i=2;i<=N;i++){
+            long newbuild=((prevbuild%1000000007)+(prevspace%1000000007))%1000000007;
+            long newspace=prevbuild;
+            
+            prevspace=prevbuild;
+            prevbuild=newbuild;
+        }
+       
+    long temp=((prevspace%1000000007)+(prevbuild%1000000007))%1000000007;
+    temp=((temp%1000000007)*(temp%1000000007))%1000000007;
+    return (int)temp;
+    }
+}
