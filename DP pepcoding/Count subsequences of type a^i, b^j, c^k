@@ -1,0 +1,21 @@
+//User function Template for Java
+
+class Solution
+{
+    public int fun(String s)
+    {
+        // Write your code here
+        long a=0,b=0,c=0;
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(ch=='a'){
+                a=((2*a)+1)%1000000007;
+            }else if(ch=='b'){
+                b=((2*b)+a)%1000000007;
+            }else if(ch=='c'){
+                c=((2*c)+b)%1000000007;
+            }
+        }
+        return (int)c;
+    }
+}
