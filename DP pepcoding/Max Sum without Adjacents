@@ -1,0 +1,16 @@
+//User function Template for Java
+
+class Solution {
+    int findMaxSum(int arr[], int n) {
+        // code here
+        int inc=arr[0];
+        int exc=0;
+        for(int i=1;i<arr.length;i++){
+            int newinc=exc+arr[i];
+            int newexc=Math.max(exc,inc);
+            inc=newinc;
+            exc=newexc;
+        }
+        return Math.max(exc,inc);
+    }
+}
