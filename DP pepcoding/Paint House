@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		int nred=0,nblue=0,ngreen=0;
+		int paint[][]=new int[n][3];
+		for(int i=0;i<n;i++){
+		    for(int j=0;j<3;j++){
+		        paint[i][j]=sc.nextInt();
+		    }
+		}
+		int pred=paint[0][0];
+		int pblue=paint[0][1];
+		int pgreen=paint[0][2];
+		for(int i=1;i<n;i++){
+	        nred=Math.min(pblue,pgreen)+paint[i][0];
+	        nblue=Math.min(pred,pgreen)+paint[i][1];
+	        ngreen=Math.min(pred,pblue)+paint[i][2];
+		    pred=nred;
+		    pblue=nblue;
+		    pgreen=ngreen;
+		}
+		int min=Math.min(nred,nblue);
+		System.out.println(Math.min(ngreen,min));
+	}
+}
