@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc =new Scanner (System.in);
+		int n=sc.nextInt();
+		int m=sc.nextInt();
+		int paint[][]=new int[n][m];
+		int least=Integer.MAX_VALUE;
+		int sleast=Integer.MAX_VALUE;
+		for(int i=0;i<n;i++){
+		    for(int j=0;j<m;j++){
+		        paint[i][j]=sc.nextInt();
+		        if(paint[i][j]<=least){
+		            sleast=least;
+		            least=paint[i][j];
+		        }else if(paint[i][j]<sleast){
+		            sleast=paint[i][j];
+		        }
+		    }
+		}
+		int dp[][]=new int[n][m];
+		
+		for(int i=1;i<n;i++){
+		    int nleast=Integer.MAX_VALUE;
+		    int nsleast=Integer.MAX_VALUE;
+		    for(int j=0;j<m;j++){
+		       if(paint[i][j]!=least){
+		           dp[i][j]=least+paint[i][j];
+		       }else{
+		           dp[i][j]=sleast+paint[i][j];
+		       }
+		       if(dp[i][j]<=nleast){
+		            nsleast=nleast;
+		            nleast=dp[i][j];
+		        }else if(dp[i][j]<nsleast){
+		            nsleast=dp[i][j];
+		        }
+		    }
+		    least=nleast;
+		    sleast=nsleast;
+		}
+		System.out.println(least);
+	}
+}
