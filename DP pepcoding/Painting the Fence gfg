@@ -1,0 +1,17 @@
+class Solution
+{
+    long countWays(int n,int k)
+    {
+        if(n==1){
+            return k;
+        }
+		long ii=k*1,ij=k*(k-1);
+		long total=ii+ij;
+		for(int i=2;i<n;i++){
+		    ii=ij*1;  //*1 is for better understanding
+		    ij=(total*(k-1));
+		    total=(ii+ij)%1000000007;
+		}
+		return total;
+    }
+}
