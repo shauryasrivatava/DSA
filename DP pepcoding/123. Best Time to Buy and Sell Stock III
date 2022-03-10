@@ -1,0 +1,29 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int dpl[]=new int[prices.length];
+        int profit=0,min=prices[0];
+        dpl[0]=0;
+        int ans=0;
+        for(int i=1;i<prices.length;i++){
+            min=Math.min(prices[i],min);
+            profit=prices[i]-min;
+            if(profit>dpl[i-1]){
+                dpl[i]=profit;
+            }else dpl[i]=dpl[i-1];
+        }
+        int dpr[]=new int[prices.length];
+        int max=prices[prices.length-1];
+        dpr[prices.length-1]=0;
+        for(int i=prices.length-2;i>=0;i--){
+            max=Math.max(max,prices[i]);
+            profit=max-prices[i];
+            if(profit>dpr[i+1]){
+                dpr[i]=profit;
+            }else dpr[i]=dpr[i+1];
+            if((dpl[i]+dpr[i])>ans){
+                ans=dpl[i]+dpr[i];
+            }
+        }
+        return ans;
+    }
+}
