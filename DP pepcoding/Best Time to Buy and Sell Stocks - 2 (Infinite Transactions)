@@ -17,14 +17,18 @@ class Codechef
 		int bd=0;
 		int sd=0;
 		for(int i=1;i<n;i++){
-		  if(price[i-1]<price[i]) 
+		  if(price[i-1]<=price[i]) 
 		    sd++;
 		  else {
-		      res+=price[sd]-price[bd];
+		      if(sd>bd)
+		         res+=price[sd]-price[bd];
 		      bd=i;
 		      sd++;
 		  }
 		}
+		if(price[n-2]<=price[n-1] && bd<sd){
+       		    res+=price[sd]-price[bd];
+        	}
 		System.out.println(res);
 	}
 }
