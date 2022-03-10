@@ -1,0 +1,35 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int n=12;
+		int price[]={10,15,17,20,16,18,22,20,22,20,23,25};
+		int fee=3;
+		int obsp=-price[0];
+		int ossp=0;
+		for(int i=1;i<n;i++){
+		    int nbsp=0;
+		    int nssp=0;
+		    if(ossp-price[i]>obsp){
+		        nbsp=ossp-price[i];
+		    }else{
+		        nbsp=obsp;
+		    }
+		    if(price[i]+obsp-fee>ossp){
+		        nssp=price[i]+obsp-fee;
+		    }else{
+		        nssp=ossp;
+		    }
+		    ossp=nssp;
+		    obsp=nbsp;
+		}
+		System.out.println(ossp);
+	}
+}
