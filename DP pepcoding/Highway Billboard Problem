@@ -1,0 +1,40 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		int m=sc.nextInt();
+		int r=sc.nextInt();
+		int miles[]=new int[r];
+		for(int i=0;i<r;i++){
+	       miles[i]=sc.nextInt();
+		}
+		int rev[]=new int[r];
+		for(int i=0;i<r;i++){
+	       rev[i]=sc.nextInt();
+		}
+		int doori=sc.nextInt();
+		int dp[]=new int[r];
+		dp[0]=rev[0];
+		int max=0,ans=0;
+		for(int i=1;i<r;i++){
+	        for(int j=0;j<i;j++)
+	        {
+	            if((miles[i]-miles[j])>doori)
+	            {
+		            max=Math.max(dp[j],max);
+		        }
+		    }
+            dp[i]=rev[i]+max;
+            ans=Math.max(dp[i],ans);
+            
+		}
+	    	System.out.println(ans);
+	}
+}
