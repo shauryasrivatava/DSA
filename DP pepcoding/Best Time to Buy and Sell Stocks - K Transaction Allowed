@@ -1,0 +1,27 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int n=3;
+		int price[]={10,20,30};
+		int k=1;
+		int dp[][]=new int[k+1][n];
+		int max=0;
+		for(int i=1;i<=k;i++){
+		    for(int j=1;j<n;j++){
+		        max=dp[i][j-1];
+		        for(int a=0;a<j;a++){
+		            int temp=dp[i-1][a];
+		            max=Math.max(max,((price[j]-price[a])+temp));
+		        }
+		        dp[i][j]=max;
+		    }
+		}
+		System.out.println(dp[k][n-1]);
+	}
+}
